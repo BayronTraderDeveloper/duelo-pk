@@ -23,9 +23,9 @@ export class Menu {
     const s = this.app.sel, one = mode !== 'local' && mode !== 'train';
     const t = { local: 'Elige luchadores', train: 'Entrenamiento', create: 'Crear sala', join: 'Unirse a sala', quick: 'Jugar online' }[mode];
     const sub = { local: 'Jugador 1 a la izquierda (WASD), Jugador 2 a la derecha (flechas).', train: 'El rival no se mueve; la vida se rellena sola.', create: 'Elige tu luchador; después te damos el código de la sala.', join: 'Elige tu luchador y escribe el código.', quick: 'Elige tu luchador y buscamos una sala abierta.' }[mode];
-    return `${this.head(t, sub)}<div class="sel ${one ? 'one' : ''}">${this.picker(0, s[0], one ? 'Tu luchador' : 'Jugador 1')}${one ? '' : this.picker(1, s[1], mode === 'train' ? 'Rival de práctica' : 'Jugador 2')}</div>
+    return `${this.head(t, sub)}<div class="pickers ${one ? 'one' : ''}">${this.picker(0, s[0], one ? 'Tu luchador' : 'Jugador 1')}${one ? '' : this.picker(1, s[1], mode === 'train' ? 'Rival de práctica' : 'Jugador 2')}</div>
       ${one ? `<div class="namerow"><label>Tu nombre <input id="nm" maxlength="16" value="${esc(this.app.name)}"></label></div>` : ''}
-      ${mode === 'join' ? `<form class="code" data-f="join"><input id="code" maxlength="5" placeholder="CÓDIGO" autocomplete="off" value="${esc(this.data.code || '')}" autofocus><button class="go">Entrar</button></form>` : `<button class="go big" data-a="go" data-v="${mode}">${{ local: 'A pelear', train: 'Entrenar', create: 'Crear sala', quick: 'Buscar rival' }[mode]}</button>`}`;
+      ${mode === 'join' ? `<form class="code" data-f="join"><input id="code" maxlength="5" placeholder="CÓDIGO" autocomplete="off" value="${esc(this.data.code || '')}" autofocus><button class="go">Entrar</button></form>` : `<button class="go start" data-a="go" data-v="${mode}">${{ local: 'A pelear', train: 'Entrenar', create: 'Crear sala', quick: 'Buscar rival' }[mode]}</button>`}`;
   }
   lobby({ code, status, link, error }) {
     return `${this.head('Sala online', '')}<div class="lobby">${code ? `<div class="bigcode"><small>Código de la sala</small><b>${esc(code)}</b></div><div class="row"><button data-a="copy" data-v="${esc(link)}">Copiar enlace</button><button data-a="copycode" data-v="${esc(code)}">Copiar código</button></div>` : ''}
