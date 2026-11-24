@@ -15,7 +15,7 @@ export class Hud {
   event(e) {
     if (!this.shown) return; const m = this.match;
     if (e.t === 'round') this.big(e.n >= 5 ? 'RONDA FINAL' : `RONDA ${e.n}`);
-    else if (e.t === 'fight') this.big('¡PELEA!', '', 'go');
+    else if (e.t === 'fight') this.big('¡PELEA!', '', 'fight');
     else if (e.t === 'ko') this.big('K.O.', e.winner >= 0 ? `Gana ${m.names[e.winner]}` : 'Doble K.O.', 'ko');
     else if (e.t === 'time') this.big('¡TIEMPO!', e.winner >= 0 ? `Gana ${m.names[e.winner]}` : 'Empate');
     else if (e.t === 'guardbreak') this.big('GUARDIA ROTA', '', 'sm');
