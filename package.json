@@ -1,0 +1,19 @@
+{
+  "name": "duelo-pk",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5191 --strictPort",
+    "build": "vite build",
+    "test": "node --test tests/"
+  },
+  "dependencies": {
+    "nostr-tools": "^2.26.1",
+    "three": "^0.187.0",
+    "trystero": "^0.26.0"
+  },
+  "devDependencies": {
+    "vite": "^6.4.6"
+  }
+}
